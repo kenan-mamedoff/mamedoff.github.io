@@ -3,28 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Kenan Mamedoff</title>
 
     <meta name="theme-color" content="#e8e8e8">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="light">
+    <meta name="msapplication-navbutton-color" content="#e8e8e8">
     <meta name="darkreader-lock">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="modulepreload" href="script.js">
+    <link rel="modulepreload" href="assets/pdfjs/pdf.mjs">
+    <link rel="modulepreload" href="assets/pdfjs/pdf.worker.mjs">
+    <link rel="preload" href="CV.pdf" as="fetch" type="application/pdf" crossorigin="anonymous">
 
-    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96"/>
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
-    <link rel="shortcut icon" href="assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
-    <meta name="apple-mobile-web-app-title" content="Mamedoff"/>
-    <link rel="manifest" href="site.webmanifest"/>
+    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#242424">
+    <meta name="apple-mobile-web-app-title" content="Mamedoff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="site.webmanifest">
 </head>
 
 <body>
-    <iframe id="canva-iframe" title="Kenan Mamedoff's CV"
-        src="https://www.canva.com/design/DAGskXnJnF8/v4Y4ZUGTzCwGQE2M3E9GQg/view?embed"
-        allowfullscreen="allowfullscreen" allow="fullscreen">
-    </iframe>
+    <div class="pdf-shell">
+        <main class="pdf-viewer" data-pdf-viewer aria-label="Kenan Mamedoff CV"></main>
+        <noscript>
+            <p class="pdf-fallback"><a href="CV.pdf">Open CV.pdf</a></p>
+        </noscript>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
