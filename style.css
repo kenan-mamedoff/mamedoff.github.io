@@ -1,9 +1,16 @@
 :root {
     --page-background: #e8e8e8;
 
+    box-sizing: border-box;
     color-scheme: light;
     background: var(--page-background);
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 html,
@@ -11,6 +18,7 @@ body {
     min-height: 100%;
     margin: 0;
     background: var(--page-background);
+    overflow-x: hidden;
 }
 
 body {
@@ -22,10 +30,82 @@ a {
 }
 
 .pdf-shell {
-    width: min(100% - 24px, 1288px);
+    width: calc(100% - 64px);
+    max-width: 1288px;
     margin: 0 auto;
     padding-top: max(24px, env(safe-area-inset-top));
     padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+
+.pdf-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    min-width: 0;
+}
+
+.pdf-downloads {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.pdf-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 18px 0 14px;
+    color: #24364a;
+    background: #f8fafc;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    text-decoration: none;
+    transition:
+        background-color 160ms ease,
+        color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.pdf-download span {
+    min-width: 0;
+    overflow: hidden;
+    font-size: 0.95rem;
+    font-weight: 650;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pdf-download svg {
+    flex: 0 0 auto;
+}
+
+.pdf-download:hover,
+.pdf-download:focus-visible {
+    color: #fff;
+    background: #24364a;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.pdf-download:focus-visible {
+    outline: 3px solid rgba(36, 54, 74, 0.35);
+    outline-offset: 3px;
+}
+
+.pdf-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    object-fit: cover;
 }
 
 .pdf-viewer {
@@ -79,9 +159,29 @@ a {
 
 @media (max-width: 640px) {
     .pdf-shell {
-        width: min(100% - 16px, 1288px);
+        width: calc(100% - 32px);
         padding-top: max(8px, env(safe-area-inset-top));
         padding-bottom: max(8px, env(safe-area-inset-bottom));
+    }
+
+    .pdf-actions {
+        margin-bottom: 16px;
+    }
+
+    .pdf-download {
+        height: 40px;
+        padding: 0 14px 0 12px;
+        border-radius: 10px;
+    }
+
+    .pdf-download span {
+        font-size: 0.9rem;
+    }
+
+    .pdf-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
     }
 
     .pdf-viewer {
@@ -95,7 +195,13 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .pdf-viewer {
+    .pdf-viewer,
+    .pdf-download {
         transition: none;
+    }
+
+    .pdf-download:hover,
+    .pdf-download:focus-visible {
+        transform: none;
     }
 }

@@ -11,7 +11,7 @@ let resizeTimer = 0;
 
 const getViewerWidth = () => {
     const width = viewer.getBoundingClientRect().width;
-    return Math.max(280, Math.floor(width));
+    return Math.max(1, Math.floor(width));
 };
 
 const createLinkOverlay = (annotation, viewport) => {
