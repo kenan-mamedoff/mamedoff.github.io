@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="2048" height="2048"><svg width="2048" height="2048" viewBox="0 0 2048 2048" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="2048" height="2048" fill="#F2F2F2" data-darkreader-inline-fill="" style="--darkreader-inline-fill: var(--darkreader-background-f2f2f2, #242728);"></rect>
 <g clip-path="url(#clip0_0_1)">
 <rect width="2048" height="2048" fill="white" data-darkreader-inline-fill="" style="--darkreader-inline-fill: var(--darkreader-background-ffffff, #1c1e1f);"></rect>
 <rect x="-257" y="-255" width="2531" height="2531" rx="440" fill="#FF5721" stroke="white" stroke-width="80" data-darkreader-inline-fill="" data-darkreader-inline-stroke="" style="--darkreader-inline-fill: var(--darkreader-background-ff5721, #d43400); --darkreader-inline-stroke: var(--darkreader-text-ffffff, #ffffff);"></rect>
@@ -10,7 +9,7 @@
 </g>
 <defs>
 <clipPath id="clip0_0_1">
-<rect width="2048" height="2048" fill="white" data-darkreader-inline-fill="" style="--darkreader-inline-fill: var(--darkreader-text-ffffff, #ffffff);"></rect>
+<rect width="2048" height="2048" rx="512" fill="white" data-darkreader-inline-fill="" style="--darkreader-inline-fill: var(--darkreader-text-ffffff, #ffffff);"></rect>
 </clipPath>
 </defs>
 </svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }

@@ -86,7 +86,8 @@ a {
 }
 
 .pdf-download:hover,
-.pdf-download:focus-visible {
+.pdf-download:focus-visible,
+.pdf-logo:focus-visible {
     color: #fff;
     background: #24364a;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
@@ -103,8 +104,19 @@ a {
     flex: 0 0 auto;
     width: 44px;
     height: 44px;
+    padding: 0;
+    border: 0;
     border-radius: 12px;
+    background: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+}
+
+.pdf-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
     object-fit: cover;
 }
 

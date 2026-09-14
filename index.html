@@ -17,9 +17,7 @@
     <link rel="modulepreload" href="assets/pdfjs/pdf.worker.mjs">
     <link rel="preload" href="assets/CurriculumVitae/Kenan-Mamedoff-CV-2026.pdf" as="fetch" type="application/pdf" crossorigin="anonymous">
 
-    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" sizes="any">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#242424">
     <meta name="apple-mobile-web-app-title" content="Mamedoff">
@@ -32,7 +30,9 @@
 <body>
     <div class="pdf-shell">
         <div class="pdf-actions">
-            <img class="pdf-logo" src="assets/favicon.svg" alt="Mamedoff logo">
+            <button class="pdf-logo" type="button" aria-label="Refresh page">
+                <img src="assets/favicon.svg" alt="">
+            </button>
             <div class="pdf-downloads">
                 <a class="pdf-download" href="assets/CurriculumVitae/Kenan-Mamedoff-CV-2026.pdf" download="Kenan-Mamedoff-CV-2026.pdf">
                     <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

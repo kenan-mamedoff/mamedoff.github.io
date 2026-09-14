@@ -4,6 +4,8 @@ const pdfUrl = new URL("assets/CurriculumVitae/Kenan-Mamedoff-CV-2026.pdf", docu
 const viewer = document.querySelector("[data-pdf-viewer]");
 const maxCanvasDimension = 4096;
 
+document.querySelector(".pdf-logo").addEventListener("click", () => window.location.reload());
+
 pdfjsLib.GlobalWorkerOptions.workerSrc = "./assets/pdfjs/pdf.worker.mjs";
 
 let pdfDocument = null;
