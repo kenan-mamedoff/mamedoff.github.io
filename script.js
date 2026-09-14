@@ -1,6 +1,6 @@
 import * as pdfjsLib from "./assets/pdfjs/pdf.mjs";
 
-const pdfUrl = new URL("CV.pdf", document.baseURI).href;
+const pdfUrl = new URL("assets/CurriculumVitae/Kenan-Mamedoff-CV-2026.pdf", document.baseURI).href;
 const viewer = document.querySelector("[data-pdf-viewer]");
 const maxCanvasDimension = 4096;
 
@@ -132,8 +132,8 @@ const showError = error => {
     const link = document.createElement("a");
     fallback.className = "pdf-fallback";
     fallback.append("Unable to load ");
-    link.href = "CV.pdf";
-    link.textContent = "CV.pdf";
+    link.href = pdfUrl;
+    link.textContent = "Kenan-Mamedoff-CV-2026.pdf";
     fallback.append(link, ".");
 
     viewer.replaceChildren(fallback);
