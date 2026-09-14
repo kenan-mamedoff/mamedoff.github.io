@@ -161,7 +161,7 @@ a {
     .pdf-shell {
         width: calc(100% - 32px);
         padding-top: max(8px, env(safe-area-inset-top));
-        padding-bottom: max(8px, env(safe-area-inset-bottom));
+        padding-bottom: calc(32px + env(safe-area-inset-bottom));
     }
 
     .pdf-actions {
