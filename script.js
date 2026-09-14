@@ -2,6 +2,7 @@ import * as pdfjsLib from "./assets/pdfjs/pdf.mjs";
 
 const pdfUrl = new URL("CV.pdf", document.baseURI).href;
 const viewer = document.querySelector("[data-pdf-viewer]");
+const maxCanvasDimension = 4096;
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = "./assets/pdfjs/pdf.worker.mjs";
 
@@ -44,11 +45,15 @@ const createLinkOverlay = (annotation, viewport) => {
     return link;
 };
 
-const renderPage = async (pageNumber, availableWidth) => {
+const renderPage = async (pageNumber, availableWidth, displayScale) => {
     const page = await pdfDocument.getPage(pageNumber);
     const baseViewport = page.getViewport({ scale: 1 });
     const viewport = page.getViewport({ scale: availableWidth / baseViewport.width });
-    const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+    // Preserve text detail at narrow widths and redraw at the current zoom density.
+    const outputScale = Math.min(
+        Math.max(displayScale, 2 * baseViewport.width / viewport.width),
+        maxCanvasDimension / Math.max(viewport.width, viewport.height),
+    );
 
     const pageElement = document.createElement("section");
     pageElement.className = "pdf-page";
@@ -98,9 +103,10 @@ const renderDocument = async () => {
     const currentRenderId = ++renderId;
     const fragment = document.createDocumentFragment();
     const width = getViewerWidth();
+    const displayScale = (window.devicePixelRatio || 1) * (window.visualViewport?.scale || 1);
 
     for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber += 1) {
-        const pageElement = await renderPage(pageNumber, width);
+        const pageElement = await renderPage(pageNumber, width, displayScale);
         if (currentRenderId !== renderId) {
             return;
         }
@@ -137,8 +143,15 @@ const showError = error => {
 try {
     const loadingTask = pdfjsLib.getDocument({ url: pdfUrl });
     pdfDocument = await loadingTask.promise;
+
+    // A binary download URL prevents iOS Safari from opening its PDF preview.
+    const data = await pdfDocument.getData();
+    const downloadLink = document.querySelector(".pdf-download");
+    downloadLink.href = URL.createObjectURL(new Blob([data], { type: "application/octet-stream" }));
+
     await renderDocument();
     window.addEventListener("resize", queueRender);
+    window.visualViewport?.addEventListener("resize", queueRender);
 } catch (error) {
     showError(error);
 }
